@@ -1,0 +1,42 @@
+<!doctypehtml>
+<html lang=en-us>
+	<head>
+		<meta charset=utf-8>
+		<meta content="text/html; charset=utf-8"http-equiv=Content-Type>
+		<title>Multiply scalar to elliptic curve point</title>
+<style></style>
+	</head>
+	<body>
+<div id=main-container>
+			<form id=form>
+ 				<button id=btn-paste-from-stb type=button>Вставить значения</button><br><br>
+		<h1>Параметры эллиптической кривой </h1>
+	            <label>a <input id=curve-a name=curve-a size="100"></label><br><br>
+	            <label>b <input id=curve-b name=curve-b size="100"></label><br><br>
+	            <label>p <input id=curve-p name=curve-p size="100"></label><br><br>
+		<h1>Умножение точки (X,Y) на скаляр К </h1>
+	            <label>точка на кривой (X) <input id=curve-x name=curve-x size="100"></label><br><br>
+	            <label>точка на кривой (Y) <input id=curve-y name=curve-y size="100"></label><br><br>
+	            <label>K(скаляр) <input id=curve-k name=curve-k size="100"></label><br><br>
+	            <h1>Результат </h1>
+	            <label>Qx <input id=curve-qx name=curve-qx disabled size="100"></label><br><br>
+	            <label>Qy <input id=curve-qy name=curve-qy disabled size="100"></label><br><br>
+	            <label>Время вычислений <input id=curve-time name=curve-time disabled size="100"></label><br><br>
+	            <button id=btn-start-calc type=button>Посчитать</button><br><br>
+        	</form>
+		</div>
+<script>
+	var Module={
+		preRun:[],postRun:[],
+		printErr:function(e){
+			arguments.length>1&&(e=Array.prototype.slice.call(arguments).join(" ")),console.error(e)},
+		setStatus:function(e){
+			if(Module.setStatus.last||(Module.setStatus.last={time:Date.now(),text:""}),e!==Module.setStatus.last.text){var t=e.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/),n=Date.now();t&&n-Module.setStatus.last.time<30}},
+		totalDependencies:0,
+		monitorRunDependencies:function(e){this.totalDependencies=Math.max(this.totalDependencies,e),Module.setStatus(e?"Preparing... ("+(this.totalDependencies-e)+"/"+this.totalDependencies+")":"All downloads complete.")} //подключение зависимости модуля
+	};
+</script>
+		<script src=custom_script.js></script>
+		<script src=EC.js async></script>
+	</body>
+</html>
